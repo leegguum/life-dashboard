@@ -585,10 +585,15 @@ async function ghPut(path, content, sha) {
 }
 
 async function loadRecords() {
-  const file = await ghGet(GH_FILE);
-  if (!file) return { sha: null, data: {} };
-  const content = decodeURIComponent(escape(atob(file.content.replace(/\n/g,''))));
-  return { sha: file.sha, data: JSON.parse(content) };
+  try {
+    const file = await ghGet(GH_FILE);
+    if (!file || !file.content) return { sha: null, data: {} };
+    const raw = file.content.replace(/\n/g, '');
+    const content = decodeURIComponent(escape(atob(raw)));
+    return { sha: file.sha, data: JSON.parse(content) };
+  } catch(e) {
+    return { sha: null, data: {} };
+  }
 }
 
 // ─── 저장 ───
