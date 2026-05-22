@@ -36,30 +36,11 @@
   .section-block { margin-bottom: 56px; }
   .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 16px; }
   .divider { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+  .row-between { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .row-between .section-label { margin-bottom: 0; }
 
   /* TOP HEADER */
-  .top-header { margin-bottom: 40px; }
-  .top-date { font-family: var(--mono); font-size: 13px; color: var(--text-secondary); font-weight: 300; margin-bottom: 4px; }
-  .top-sub { font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; }
-
-  /* CHECKLIST */
-  .check-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 16px; }
-  .check-item { background: var(--surface); padding: 14px 16px; }
-  .check-top { display: flex; align-items: center; gap: 12px; }
-  .check-top.expanded { margin-bottom: 12px; }
-  .check-box { width: 16px; height: 16px; border-radius: 3px; border: 1px solid var(--border); background: var(--bg); cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
-  .check-box.checked { background: var(--accent-soft); border-color: var(--accent); }
-  .check-box.checked::after { content: '✓'; font-size: 10px; color: var(--accent); }
-  .check-label { font-size: 13px; color: var(--text-secondary); flex: 1; cursor: pointer; }
-  .check-box.checked ~ .check-label { color: var(--text-primary); }
-  .check-detail { display: none; flex-direction: column; gap: 8px; padding-left: 28px; }
-  .check-detail.open { display: flex; }
-  .detail-row { display: flex; gap: 8px; align-items: center; }
-  .detail-label { font-family: var(--mono); font-size: 10px; color: var(--text-dim); width: 44px; flex-shrink: 0; }
-  .detail-input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 7px 10px; color: var(--text-primary); font-family: var(--mono); font-size: 11px; outline: none; }
-  .detail-input:focus { border-color: var(--accent); }
-  .time-select { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 7px 10px; color: var(--text-secondary); font-family: var(--mono); font-size: 11px; outline: none; cursor: pointer; }
-  .time-select:focus { border-color: var(--accent); }
+  .top-date { font-family: var(--mono); font-size: 13px; color: var(--text-secondary); font-weight: 300; margin-bottom: 40px; }
 
   /* BUTTONS */
   .btn { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 16px; border-radius: 4px; cursor: pointer; border: 1px solid var(--border); background: var(--surface2); color: var(--text-secondary); transition: all 0.2s; text-decoration: none; display: inline-block; }
@@ -67,8 +48,39 @@
   .btn.primary { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-light); }
   .btn.primary:hover { background: var(--accent); color: var(--bg); }
   .btn.danger { border-color: var(--danger); color: var(--danger); }
-  .btn-row { display: flex; gap: 8px; align-items: center; }
-  .save-status { font-family: var(--mono); font-size: 10px; color: var(--text-dim); margin-top: 10px; letter-spacing: 0.05em; min-height: 16px; }
+  .btn.sm { font-size: 9px; padding: 5px 10px; }
+  .btn-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+  /* TABLE */
+  .rec-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .rec-table th { background: var(--surface2); font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); padding: 10px 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  .rec-table td { background: var(--surface); font-size: 12px; color: var(--text-secondary); padding: 11px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .rec-table tr:last-child td { border-bottom: none; }
+  .rec-table td.title-cell { color: var(--text-primary); max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rec-table td.date-cell { font-family: var(--mono); font-size: 10px; white-space: nowrap; }
+  .rec-table td.type-cell { font-size: 14px; text-align: center; width: 28px; }
+  .rec-table td.done-cell { width: 28px; text-align: center; }
+  .done-btn { font-family: var(--mono); font-size: 9px; color: var(--text-dim); cursor: pointer; background: none; border: 1px solid var(--border); border-radius: 3px; padding: 3px 6px; white-space: nowrap; }
+  .done-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .rec-table tr.completed td { opacity: 0.45; }
+
+  /* ADD FORM */
+  .add-form { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 16px; margin-bottom: 16px; display: none; flex-direction: column; gap: 10px; }
+  .add-form.open { display: flex; }
+  .form-row { display: flex; gap: 8px; align-items: center; }
+  .form-label { font-family: var(--mono); font-size: 10px; color: var(--text-dim); width: 44px; flex-shrink: 0; }
+  .form-input { flex: 1; background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 7px 10px; color: var(--text-primary); font-family: var(--mono); font-size: 11px; outline: none; }
+  .form-input:focus { border-color: var(--accent); }
+  .form-select { background: var(--bg); border: 1px solid var(--border); border-radius: 3px; padding: 7px 10px; color: var(--text-secondary); font-family: var(--mono); font-size: 11px; outline: none; cursor: pointer; }
+  .form-select:focus { border-color: var(--accent); }
+
+  /* CUMULATIVE */
+  .activity-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .activity-item { background: var(--surface); padding: 14px 18px; display: flex; align-items: baseline; justify-content: space-between; }
+  .activity-name { font-size: 13px; color: var(--text-secondary); font-weight: 300; }
+  .activity-right { display: flex; align-items: baseline; gap: 6px; }
+  .activity-number { font-family: var(--mono); font-size: 18px; font-weight: 300; color: var(--text-primary); }
+  .activity-unit { font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
 
   /* DASHBOARD */
   .main-number { font-family: var(--mono); font-size: clamp(52px, 15vw, 80px); font-weight: 300; color: var(--text-primary); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
@@ -80,31 +92,14 @@
   .sub-stat { background: var(--surface); padding: 18px 14px; text-align: center; }
   .sub-number { font-family: var(--mono); font-size: 20px; font-weight: 300; color: var(--text-primary); letter-spacing: -0.01em; margin-bottom: 4px; }
   .sub-label { font-size: 10px; color: var(--text-secondary); letter-spacing: 0.05em; }
-  .activity-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 40px; }
-  .activity-item { background: var(--surface); padding: 16px 18px; display: flex; align-items: baseline; justify-content: space-between; }
-  .activity-name { font-size: 13px; color: var(--text-secondary); font-weight: 300; }
-  .activity-right { display: flex; align-items: baseline; gap: 6px; }
-  .activity-number { font-family: var(--mono); font-size: 18px; font-weight: 300; color: var(--text-primary); }
-  .activity-unit { font-family: var(--mono); font-size: 10px; color: var(--text-dim); }
   .weeks-grid { display: grid; grid-template-columns: repeat(52, 1fr); gap: 2px; margin-bottom: 40px; }
   .week-dot { aspect-ratio: 1; border-radius: 1px; background: var(--border); }
   .week-dot.lived { background: var(--accent-soft); }
   .week-dot.current { background: var(--accent); }
-
-  /* NOTES */
   .notes-block { display: flex; flex-direction: column; gap: 20px; }
   .notes-group { border-left: 1px solid var(--border); padding-left: 14px; }
   .notes-title { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
   .notes-line { font-family: var(--mono); font-size: 11px; color: var(--text-dim); line-height: 1.8; }
-
-  /* HISTORY */
-  .log-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-  .log-item { background: var(--surface); padding: 14px 16px; }
-  .log-date { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
-  .log-entries { display: flex; flex-direction: column; gap: 4px; }
-  .log-entry { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
-  .log-entry-title { color: var(--text-primary); }
-  .log-empty { font-family: var(--mono); font-size: 11px; color: var(--text-dim); text-align: center; padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; }
 
   /* GITHUB */
   .github-setup { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 20px; }
@@ -113,9 +108,9 @@
   .setup-input:focus { border-color: var(--accent); }
   .connected-row { display: flex; align-items: center; gap: 12px; }
   .connected-label { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.1em; }
-
+  .status-msg { font-family: var(--mono); font-size: 10px; color: var(--text-dim); margin-top: 10px; letter-spacing: 0.05em; min-height: 16px; }
   .page-footer { font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 0.1em; text-align: center; }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .empty-msg { font-family: var(--mono); font-size: 11px; color: var(--text-dim); text-align: center; padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; }
 </style>
 </head>
 <body>
@@ -129,70 +124,52 @@
 <div id="page-dashboard" class="page active">
 <div class="wrap">
 
-  <!-- 날짜 헤더 -->
-  <div class="top-header">
-    <div class="top-date" id="topDate"></div>
-  </div>
+  <div class="top-date" id="topDate"></div>
 
-  <!-- 오늘의 기록 -->
+  <!-- 기록 테이블 -->
   <div class="section-block">
-    <div class="section-label">오늘의 기록</div>
-    <div class="check-list">
-      <!-- 책: 제목만 -->
-      <div class="check-item">
-        <div class="check-top" id="top-book">
-          <div class="check-box" id="cb-book" onclick="toggleCheck('book')"></div>
-          <span class="check-label" onclick="toggleCheck('book')">📚 책 읽기</span>
-        </div>
-        <div class="check-detail" id="detail-book">
-          <div class="detail-row"><span class="detail-label">제목</span><input class="detail-input" id="title-book" placeholder="읽은 책 제목"></div>
-        </div>
-      </div>
-      <!-- 소설: 체크만 (2시간 고정) -->
-      <div class="check-item">
-        <div class="check-top" id="top-novel">
-          <div class="check-box" id="cb-novel" onclick="toggleCheck('novel')"></div>
-          <span class="check-label" onclick="toggleCheck('novel')">✍️ 소설 쓰기</span>
-          <span style="font-family:var(--mono); font-size:10px; color:var(--text-dim);">2시간</span>
-        </div>
-      </div>
-      <!-- 영화: 제목만 -->
-      <div class="check-item">
-        <div class="check-top" id="top-movie">
-          <div class="check-box" id="cb-movie" onclick="toggleCheck('movie')"></div>
-          <span class="check-label" onclick="toggleCheck('movie')">🎬 영화</span>
-        </div>
-        <div class="check-detail" id="detail-movie">
-          <div class="detail-row"><span class="detail-label">제목</span><input class="detail-input" id="title-movie" placeholder="본 영화 제목"></div>
-        </div>
-      </div>
-      <!-- 만화: 제목 + 시간 -->
-      <div class="check-item">
-        <div class="check-top" id="top-manga">
-          <div class="check-box" id="cb-manga" onclick="toggleCheck('manga')"></div>
-          <span class="check-label" onclick="toggleCheck('manga')">📖 만화</span>
-        </div>
-        <div class="check-detail" id="detail-manga">
-          <div class="detail-row"><span class="detail-label">제목</span><input class="detail-input" id="title-manga" placeholder="읽은 만화 제목 (선택)"></div>
-          <div class="detail-row"><span class="detail-label">시간</span><select class="time-select" id="hours-manga"><option value="0.5">30분</option><option value="1" selected>1시간</option><option value="1.5">1시간 30분</option><option value="2">2시간</option></select></div>
-        </div>
-      </div>
+    <div class="row-between">
+      <div class="section-label">기록</div>
+      <button class="btn sm" onclick="toggleAddForm()">+ 추가</button>
     </div>
-    <div class="btn-row">
-      <button class="btn primary" onclick="saveToday()" id="saveBtn">저장하기</button>
-      <button class="btn" onclick="clearToday()">초기화</button>
+
+    <!-- 추가 폼 -->
+    <div class="add-form" id="addForm">
+      <div class="form-row">
+        <span class="form-label">분류</span>
+        <select class="form-select" id="f-type">
+          <option value="book">📚 책</option>
+          <option value="movie">🎬 영화</option>
+          <option value="novel">✍️ 소설</option>
+          <option value="manga">📖 만화</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <span class="form-label">제목</span>
+        <input class="form-input" id="f-title" placeholder="제목 입력">
+      </div>
+      <div class="form-row">
+        <span class="form-label">시작일</span>
+        <input class="form-input" id="f-start" type="date">
+      </div>
+      <div class="btn-row">
+        <button class="btn primary" onclick="addRecord()">저장</button>
+        <button class="btn" onclick="toggleAddForm()">취소</button>
+      </div>
+      <div class="status-msg" id="addStatus"></div>
     </div>
-    <div class="save-status" id="saveStatus"></div>
+
+    <div id="recTable"><div class="empty-msg">기록이 없어요</div></div>
   </div>
 
-  <!-- 누적 기록 -->
+  <!-- 누적 통계 -->
   <div class="section-block">
     <div class="section-label">지금까지</div>
-    <div class="activity-list" id="cumStats">
-      <div class="activity-item"><span class="activity-name">📚 책 읽기</span><div class="activity-right"><span class="activity-number" id="cum-book">—</span><span class="activity-unit">권</span></div></div>
-      <div class="activity-item"><span class="activity-name">✍️ 소설 쓰기</span><div class="activity-right"><span class="activity-number" id="cum-novel">—</span><span class="activity-unit">시간</span></div></div>
+    <div class="activity-list">
+      <div class="activity-item"><span class="activity-name">📚 책</span><div class="activity-right"><span class="activity-number" id="cum-book">—</span><span class="activity-unit">권</span></div></div>
       <div class="activity-item"><span class="activity-name">🎬 영화</span><div class="activity-right"><span class="activity-number" id="cum-movie">—</span><span class="activity-unit">편</span></div></div>
-      <div class="activity-item"><span class="activity-name">📖 만화</span><div class="activity-right"><span class="activity-number" id="cum-manga">—</span><span class="activity-unit">시간</span></div></div>
+      <div class="activity-item"><span class="activity-name">✍️ 소설</span><div class="activity-right"><span class="activity-number" id="cum-novel">—</span><span class="activity-unit">편</span></div></div>
+      <div class="activity-item"><span class="activity-name">📖 만화</span><div class="activity-right"><span class="activity-number" id="cum-manga">—</span><span class="activity-unit">권</span></div></div>
     </div>
   </div>
 
@@ -213,11 +190,10 @@
     <div class="section-label">인생의 주 (週) — 80년</div>
     <div class="weeks-grid" id="weeksGrid"></div>
     <div class="section-label">자유시간으로 할 수 있는 것들</div>
-    <div class="activity-list">
+    <div class="activity-list" style="margin-bottom:40px;">
       <div class="activity-item"><span class="activity-name">읽을 수 있는 책</span><div class="activity-right"><span class="activity-number" id="books"></span><span class="activity-unit">권</span></div></div>
       <div class="activity-item"><span class="activity-name">쓸 수 있는 소설</span><div class="activity-right"><span class="activity-number" id="novels"></span><span class="activity-unit">편</span></div></div>
       <div class="activity-item"><span class="activity-name">볼 수 있는 영화</span><div class="activity-right"><span class="activity-number" id="movies"></span><span class="activity-unit">편</span></div></div>
-      <div class="activity-item"><span class="activity-name">클리어할 수 있는 게임</span><div class="activity-right"><span class="activity-number" id="games"></span><span class="activity-unit">편</span></div></div>
       <div class="activity-item"><span class="activity-name">읽을 수 있는 만화</span><div class="activity-right"><span class="activity-number" id="manga"></span><span class="activity-unit">권</span></div></div>
     </div>
     <div class="section-label">계산식 메모</div>
@@ -226,7 +202,6 @@
       <div class="notes-group"><div class="notes-title">📚 책 — 하루 1시간</div><div class="notes-line">한 달 2.5권 페이스 / 이것만 한다면: 하루 약 2~3권</div></div>
       <div class="notes-group"><div class="notes-title">✍️ 소설 집필 — 하루 1시간</div><div class="notes-line">시간당 1,000~2,000자 / 장편(20만자) 약 1년 / 이것만 한다면: 3~6개월</div></div>
       <div class="notes-group"><div class="notes-title">🎬 영화 — 하루 40분</div><div class="notes-line">평균 2시간 → 3일에 1편 / 이것만 한다면: 하루 2편</div></div>
-      <div class="notes-group"><div class="notes-title">🎮 게임 — 하루 40분</div><div class="notes-line">평균 클리어 20시간 → 30일에 1편 / 이것만 한다면: 약 5일에 1편</div></div>
       <div class="notes-group"><div class="notes-title">📖 만화 — 하루 40분</div><div class="notes-line">1권 약 30~40분 → 하루 1권 / 이것만 한다면: 하루 약 6권</div></div>
     </div>
   </div>
@@ -254,26 +229,27 @@
     <div id="connectedArea" style="display:none;">
       <div class="connected-row">
         <span class="connected-label">● GitHub 연결됨</span>
-        <button class="btn danger" style="font-size:9px; padding:6px 10px;" onclick="clearToken()">연결 해제</button>
+        <button class="btn danger sm" onclick="clearToken()">연결 해제</button>
       </div>
     </div>
   </div>
 
   <hr class="divider">
 
-  <!-- 히스토리 -->
+  <!-- 전체 기록 목록 -->
   <div class="section-block">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-      <div class="section-label" style="margin-bottom:0;">히스토리</div>
-      <button class="btn" onclick="exportTsv()" style="font-size:9px; padding:6px 12px;">엑셀로 내보내기</button>
+    <div class="row-between">
+      <div class="section-label">전체 기록</div>
+      <button class="btn sm" onclick="exportTsv()">엑셀로 내보내기</button>
     </div>
-    <div id="logList"><div class="log-empty">기록이 없어요</div></div>
+    <div id="fullTable"><div class="empty-msg">기록이 없어요</div></div>
   </div>
 
 </div>
 </div>
 
 <script>
+// ── 설정 ──
 const BIRTH = new Date(1987, 8, 8);
 const LIFESPAN_YEARS = 80;
 const DEATH = new Date(BIRTH);
@@ -282,21 +258,24 @@ DEATH.setFullYear(BIRTH.getFullYear() + LIFESPAN_YEARS);
 const BOOKS_PER_DAY  = 2.5 / 30;
 const NOVELS_PER_DAY = 1 / 365;
 const MOVIES_PER_DAY = 1 / 3;
-const GAMES_PER_DAY  = 1 / 30;
 const MANGA_PER_DAY  = 1;
 
 const GH_OWNER = 'leegguum';
 const GH_REPO  = 'life-dashboard';
 const GH_FILE  = 'data/records.json';
 
-// 토큰
+// 분류 매핑 (JSON key → 이모지)
+const TYPE_EMOJI = { book:'📚', movie:'🎬', novel:'✍️', manga:'📖' };
+const TYPE_LABEL = { book:'책', movie:'영화', novel:'소설', manga:'만화' };
+
+// ── 토큰 ──
 function getToken() { return localStorage.getItem('gh_token'); }
 function saveToken() {
   const t = document.getElementById('tokenInput').value.trim();
   if (!t) return;
   localStorage.setItem('gh_token', t);
   updateTokenUI();
-  loadHistory();
+  loadData();
 }
 function clearToken() { localStorage.removeItem('gh_token'); updateTokenUI(); }
 function updateTokenUI() {
@@ -305,13 +284,18 @@ function updateTokenUI() {
   document.getElementById('connectedArea').style.display = has ? 'block' : 'none';
 }
 
-// 날짜
+// ── 날짜 ──
 function todayStr() {
   const n = new Date();
   return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`;
 }
+function fmtDate(s) {
+  if (!s) return '';
+  const parts = s.split('-');
+  return `${parts[1]}-${parts[2]}`;
+}
 
-// 대시보드
+// ── 대시보드 ──
 function updateDashboard() {
   const now = new Date();
   const msLeft   = DEATH - now;
@@ -323,7 +307,7 @@ function updateDashboard() {
   const yearsLeft  = Math.floor(daysLeft / 365.25);
   const pct = Math.min(100, (msPassed / msTotal) * 100);
 
-  document.getElementById('topDate').textContent  = now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
+  document.getElementById('topDate').textContent   = now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'long' });
   document.getElementById('daysLeft').textContent  = daysLeft.toLocaleString('ko-KR');
   document.getElementById('yearsLeft').textContent = yearsLeft;
   document.getElementById('monthsLeft').textContent= monthsLeft.toLocaleString('ko-KR');
@@ -333,7 +317,6 @@ function updateDashboard() {
   document.getElementById('books').textContent  = Math.floor(daysLeft * BOOKS_PER_DAY).toLocaleString('ko-KR');
   document.getElementById('novels').textContent = Math.floor(daysLeft * NOVELS_PER_DAY).toLocaleString('ko-KR');
   document.getElementById('movies').textContent = Math.floor(daysLeft * MOVIES_PER_DAY).toLocaleString('ko-KR');
-  document.getElementById('games').textContent  = Math.floor(daysLeft * GAMES_PER_DAY).toLocaleString('ko-KR');
   document.getElementById('manga').textContent  = Math.floor(daysLeft * MANGA_PER_DAY).toLocaleString('ko-KR');
   document.getElementById('pageFooter').textContent = `1987.09.08 — ${DEATH.getFullYear()}.09.08`;
 
@@ -349,28 +332,7 @@ function updateDashboard() {
   }
 }
 
-// 체크박스
-const ACTIVITIES = ['book','novel','movie','manga'];
-function toggleCheck(id) {
-  const cb  = document.getElementById('cb-'+id);
-  const top = document.getElementById('top-'+id);
-  const det = document.getElementById('detail-'+id);
-  const checked = cb.classList.toggle('checked');
-  top.classList.toggle('expanded', checked);
-  det.classList.toggle('open', checked);
-}
-function clearToday() {
-  ACTIVITIES.forEach(id => {
-    document.getElementById('cb-'+id).classList.remove('checked');
-    document.getElementById('top-'+id).classList.remove('expanded');
-    document.getElementById('detail-'+id).classList.remove('open');
-    const t = document.getElementById('title-'+id);
-    if (t) t.value = '';
-  });
-  document.getElementById('saveStatus').textContent = '';
-}
-
-// GitHub API
+// ── GitHub API ──
 async function ghGet(path) {
   const res = await fetch(`https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${path}`, {
     headers: { Authorization: `token ${getToken()}`, Accept: 'application/vnd.github.v3+json' }
@@ -388,92 +350,153 @@ async function ghPut(path, content, sha) {
   });
   return res.json();
 }
+
+// records.json 구조: [ { id, type, title, startDate, endDate }, ... ]
+let cachedSha = null;
+let cachedData = [];
+
 async function loadRecords() {
   try {
     const file = await ghGet(GH_FILE);
-    if (!file || !file.content) return { sha: null, data: {} };
+    if (!file || !file.content) return { sha: null, data: [] };
     const raw = file.content.replace(/\n/g, '');
-    const content = decodeURIComponent(escape(atob(raw)));
-    return { sha: file.sha, data: JSON.parse(content) };
-  } catch(e) { return { sha: null, data: {} }; }
+    const data = JSON.parse(decodeURIComponent(escape(atob(raw))));
+    return { sha: file.sha, data: Array.isArray(data) ? data : [] };
+  } catch(e) { return { sha: null, data: [] }; }
 }
 
-// 저장
-async function saveToday() {
-  const btn    = document.getElementById('saveBtn');
-  const status = document.getElementById('saveStatus');
+async function saveRecords(data, sha) {
+  return ghPut(GH_FILE, JSON.stringify(data, null, 2), sha);
+}
+
+// ── 폼 ──
+function toggleAddForm() {
+  const f = document.getElementById('addForm');
+  const isOpen = f.classList.toggle('open');
+  if (isOpen) {
+    document.getElementById('f-start').value = todayStr();
+    document.getElementById('f-title').focus();
+    document.getElementById('addStatus').textContent = '';
+  }
+}
+
+async function addRecord() {
+  const status = document.getElementById('addStatus');
   if (!getToken()) { status.textContent = '히스토리 탭에서 GitHub를 먼저 연결해주세요.'; return; }
-  const entries = [];
-  const labels = { book:'책 읽기', novel:'소설 쓰기', movie:'영화', manga:'만화' };
-  // 책: 제목만, count=1
-  if (document.getElementById('cb-book').classList.contains('checked')) {
-    const title = document.getElementById('title-book').value.trim();
-    entries.push({ type:'book', label:'책 읽기', count:1, title });
-  }
-  // 소설: 체크=2시간 고정
-  if (document.getElementById('cb-novel').classList.contains('checked')) {
-    entries.push({ type:'novel', label:'소설 쓰기', hours:2, title:'' });
-  }
-  // 영화: 제목만, count=1
-  if (document.getElementById('cb-movie').classList.contains('checked')) {
-    const title = document.getElementById('title-movie').value.trim();
-    entries.push({ type:'movie', label:'영화', count:1, title });
-  }
-  // 만화: 제목+시간
-  if (document.getElementById('cb-manga').classList.contains('checked')) {
-    const hours = parseFloat(document.getElementById('hours-manga').value);
-    const title = document.getElementById('title-manga')?.value.trim() || '';
-    entries.push({ type:'manga', label:'만화', hours, title });
-  }
-  if (!entries.length) { status.textContent = '체크된 항목이 없어요.'; return; }
-  btn.textContent = '저장 중...';
+  const type  = document.getElementById('f-type').value;
+  const title = document.getElementById('f-title').value.trim();
+  const start = document.getElementById('f-start').value;
+  if (!title) { status.textContent = '제목을 입력해주세요.'; return; }
+  if (!start) { status.textContent = '시작일을 입력해주세요.'; return; }
+
+  status.textContent = '저장 중...';
   try {
     const { sha, data } = await loadRecords();
-    data[todayStr()] = entries;
-    await ghPut(GH_FILE, JSON.stringify(data, null, 2), sha);
+    cachedSha = sha;
+    const newRecord = { id: Date.now(), type, title, startDate: start, endDate: '' };
+    data.push(newRecord);
+    const res = await saveRecords(data, sha);
+    cachedSha = res.content?.sha || sha;
+    cachedData = data;
     status.textContent = '✓ 저장됐어요.';
-    btn.textContent = '저장하기';
-    loadCumStats();
+    document.getElementById('f-title').value = '';
+    renderTable(data);
+    renderCumStats(data);
+    setTimeout(() => {
+      document.getElementById('addForm').classList.remove('open');
+      status.textContent = '';
+    }, 1000);
   } catch(e) {
     status.textContent = '저장 실패: ' + e.message;
-    btn.textContent = '저장하기';
   }
 }
 
-// 히스토리
-function renderHistory(data) {
-  const el = document.getElementById('logList');
-  const dates = Object.keys(data).sort((a,b) => b.localeCompare(a));
-  if (!dates.length) { el.innerHTML = '<div class="log-empty">기록이 없어요</div>'; return; }
-  el.innerHTML = '<div class="log-list">' + dates.map(date => {
-    const rows = data[date].map(e => {
-      const hrs = e.hours < 1 ? '30분' : e.hours === 1 ? '1시간' : `${e.hours}시간`;
-      const t = e.title ? ` — <span class="log-entry-title">${e.title}</span>` : '';
-      return `<div class="log-entry">${e.label} ${hrs}${t}</div>`;
-    }).join('');
-    return `<div class="log-item"><div class="log-date">${date}</div><div class="log-entries">${rows}</div></div>`;
-  }).join('') + '</div>';
-}
-async function loadHistory() {
+async function markDone(id) {
   if (!getToken()) return;
   try {
-    const { data } = await loadRecords();
-    renderHistory(data);
+    const { sha, data } = await loadRecords();
+    const rec = data.find(r => r.id === id);
+    if (!rec) return;
+    rec.endDate = todayStr();
+    await saveRecords(data, sha);
+    cachedData = data;
+    renderTable(data);
+    renderCumStats(data);
+    if (document.getElementById('page-history').classList.contains('active')) renderFullTable(data);
   } catch(e) {}
 }
 
-// 내보내기
+// ── 테이블 렌더 (대시보드 — 최근 10개) ──
+function renderTable(data) {
+  const el = document.getElementById('recTable');
+  if (!data.length) { el.innerHTML = '<div class="empty-msg">기록이 없어요</div>'; return; }
+
+  const sorted = [...data].sort((a,b) => b.startDate.localeCompare(a.startDate)).slice(0, 20);
+  el.innerHTML = `<table class="rec-table">
+    <thead><tr><th>분류</th><th>제목</th><th>시작</th><th>종료</th><th></th></tr></thead>
+    <tbody>${sorted.map(r => `
+      <tr class="${r.endDate ? 'completed' : ''}">
+        <td class="type-cell">${TYPE_EMOJI[r.type] || r.type}</td>
+        <td class="title-cell">${r.title}</td>
+        <td class="date-cell">${fmtDate(r.startDate)}</td>
+        <td class="date-cell">${r.endDate ? fmtDate(r.endDate) : ''}</td>
+        <td class="done-cell">${!r.endDate ? `<button class="done-btn" onclick="markDone(${r.id})">완료</button>` : ''}</td>
+      </tr>`).join('')}
+    </tbody>
+  </table>`;
+}
+
+// ── 전체 테이블 (히스토리 탭) ──
+function renderFullTable(data) {
+  const el = document.getElementById('fullTable');
+  if (!data.length) { el.innerHTML = '<div class="empty-msg">기록이 없어요</div>'; return; }
+  const sorted = [...data].sort((a,b) => b.startDate.localeCompare(a.startDate));
+  el.innerHTML = `<table class="rec-table">
+    <thead><tr><th>분류</th><th>제목</th><th>시작</th><th>종료</th><th></th></tr></thead>
+    <tbody>${sorted.map(r => `
+      <tr class="${r.endDate ? 'completed' : ''}">
+        <td class="type-cell">${TYPE_EMOJI[r.type] || r.type}</td>
+        <td class="title-cell">${r.title}</td>
+        <td class="date-cell">${fmtDate(r.startDate)}</td>
+        <td class="date-cell">${r.endDate ? fmtDate(r.endDate) : ''}</td>
+        <td class="done-cell">${!r.endDate ? `<button class="done-btn" onclick="markDone(${r.id})">완료</button>` : ''}</td>
+      </tr>`).join('')}
+    </tbody>
+  </table>`;
+}
+
+// ── 누적 통계 ──
+function renderCumStats(data) {
+  const counts = { book:0, movie:0, novel:0, manga:0 };
+  data.filter(r => r.endDate).forEach(r => {
+    if (counts[r.type] !== undefined) counts[r.type]++;
+  });
+  document.getElementById('cum-book').textContent  = counts.book  || '—';
+  document.getElementById('cum-movie').textContent = counts.movie || '—';
+  document.getElementById('cum-novel').textContent = counts.novel || '—';
+  document.getElementById('cum-manga').textContent = counts.manga || '—';
+}
+
+// ── 데이터 로드 ──
+async function loadData() {
+  if (!getToken()) return;
+  try {
+    const { sha, data } = await loadRecords();
+    cachedSha = sha;
+    cachedData = data;
+    renderTable(data);
+    renderCumStats(data);
+  } catch(e) {}
+}
+
+// ── 내보내기 ──
 async function exportTsv() {
   if (!getToken()) { alert('GitHub를 먼저 연결해주세요.'); return; }
   try {
     const { data } = await loadRecords();
-    const dates = Object.keys(data).sort((a,b) => a.localeCompare(b));
-    let tsv = '날짜\t분류\t시간\t내용\n';
-    dates.forEach(date => {
-      data[date].forEach(e => {
-        const hrs = e.hours < 1 ? '30분' : e.hours === 1 ? '1시간' : `${e.hours}시간`;
-        tsv += `${date}\t${e.label}\t${hrs}\t${e.title || ''}\n`;
-      });
+    let tsv = '분류\t제목\t시작일\t종료일\n';
+    [...data].sort((a,b) => a.startDate.localeCompare(b.startDate)).forEach(r => {
+      tsv += `${TYPE_LABEL[r.type] || r.type}\t${r.title}\t${r.startDate}\t${r.endDate || ''}\n`;
     });
     const blob = new Blob([tsv], { type: 'text/plain;charset=utf-8' });
     const a = document.createElement('a');
@@ -483,44 +506,22 @@ async function exportTsv() {
   } catch(e) { alert('내보내기 실패: ' + e.message); }
 }
 
-// 누적 통계
-async function loadCumStats() {
-  if (!getToken()) return;
-  try {
-    const { data } = await loadRecords();
-    const totals = { book: 0, novel: 0, movie: 0, manga: 0 };
-    Object.values(data).forEach(entries => {
-      entries.forEach(e => {
-        if (e.type === 'book')  totals.book  += (e.count || 0);
-        if (e.type === 'novel') totals.novel += (e.hours || 0);
-        if (e.type === 'movie') totals.movie += (e.count || 0);
-        if (e.type === 'manga') totals.manga += (e.hours || 0);
-      });
-    });
-    const el_book  = document.getElementById('cum-book');
-    const el_novel = document.getElementById('cum-novel');
-    const el_movie = document.getElementById('cum-movie');
-    const el_manga = document.getElementById('cum-manga');
-    if (el_book)  el_book.textContent  = totals.book  > 0 ? totals.book  : '—';
-    if (el_novel) el_novel.textContent = totals.novel > 0 ? totals.novel : '—';
-    if (el_movie) el_movie.textContent = totals.movie > 0 ? totals.movie : '—';
-    if (el_manga) el_manga.textContent = totals.manga > 0 ? totals.manga : '—';
-  } catch(e) {}
-}
-
-// 탭 전환
+// ── 탭 전환 ──
 function showPage(name, tab) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
   if (tab) tab.classList.add('active');
-  if (name === 'history') loadHistory();
+  if (name === 'history') renderFullTable(cachedData);
 }
 
-// 초기화
+// ── 초기화 ──
 updateDashboard();
 updateTokenUI();
-loadCumStats();
+loadData();
+
+// 시작일 기본값
+document.getElementById('f-start').value = todayStr();
 
 function scheduleNextUpdate() {
   const now = new Date();
